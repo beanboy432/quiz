@@ -1,0 +1,47 @@
+"""easy 	= '2 divided by two is ____. Since two is evenly divisible by two, it is an ____ number. Since one is not evenly divisible by two, it is an ____ number. Three is an ____ number.'
+
+med	= '3 ____ is equivalent to 3 times 3. 9 to the __1__ __2__ is '"""
+a = ["__1__, asdad, __2__", "am","all"]
+b = ["__1__, __2__, __3__, __1__", "bleep", "blop", "bloop"]
+c =	["1231231 __1__ 123123","cat"]
+
+def fillin(qa,n):
+	pro = qa[0]
+	blank = "__" + str(n) + "__"
+	count = 0
+	pos = pro.find(blank,count)
+	while pos != -1:
+		pro = pro[0:pos] +  qa[n] + pro[pos + len(blank):]
+		count = count + 1
+		pos = pro.find(blank,count)
+	else:
+		return pro
+
+def ask(qa):
+	count = 1
+	progress = qa
+	while count < len(qa):
+		print progress[0]
+		if raw_input("Go For It!") != qa[count]:
+			print "WRRRROOOOOOONNNNG!!!!! try again"
+		else:
+			print "XD"
+			progress[0] = fillin(progress, count)
+			count += 1
+	print progress[0]
+	print "THE DAY IS OOOOOOWWWWWEEEEERRRRZ!!!!!!"
+
+
+def select(c,a,b):
+	difficulty = raw_input("Select difficulty. Type: easy, medium, or hard")
+	while difficulty != ("easy" or not "medium" or not "hard"):
+		difficulty = raw_input("Woops! That's not a difficulty! Try again.")
+
+	if   difficulty == "easy":
+		ask(c)
+	elif difficulty == "medium":
+		ask(a)
+	elif difficulty == "hard":
+		ask(b)
+
+select(c,a,b)
